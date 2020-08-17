@@ -17,7 +17,7 @@ pipeline {
          }
          stage('Security Scan') {
              when {
-                branch 'master'
+                branch 'staging'
             }
               steps { 
                   aquaMicroscanner imageName: 'alpine:latest', notCompliesCmd: 'exit 1', onDisallowed: 'fail', outputFormat: 'html'
@@ -25,7 +25,7 @@ pipeline {
          }         
          stage('Upload to AWS') {
              when {
-                branch 'master'
+                branch 'production'
             }
               steps {
                   withAWS(region:'us-west-2',credentials:'aws-static') {
