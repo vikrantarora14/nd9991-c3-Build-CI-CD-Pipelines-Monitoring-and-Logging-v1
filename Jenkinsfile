@@ -19,8 +19,8 @@ pipeline {
     stage('Create EC2 Instance') {
       steps 
       {
-          //ansiblePlaybook playbook: 'main.yaml', inventory: 'inventory'
-          ansible-playbook 'main.yaml' -i 'inventory'
+          ansiblePlaybook playbook: 'main.yaml', inventory: 'inventory'
+          //ansible-playbook 'main.yaml' -i 'inventory'
       }
     }
   }
